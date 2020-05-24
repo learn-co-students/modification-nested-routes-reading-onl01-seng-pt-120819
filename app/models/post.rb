@@ -5,6 +5,11 @@ class Post < ActiveRecord::Base
   belongs_to :author
 
   #put new code here
+
+  def new 
+    @post = Post.new(author_id: params[:author_id])
+  end 
+  
   def self.from_today
     where("created_at >=?", Time.zone.today.beginning_of_day)
   end
